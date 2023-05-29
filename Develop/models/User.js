@@ -22,6 +22,7 @@ User.init(
         allowNull: false,
         
     },
+   
 email: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -53,11 +54,11 @@ password: {
             return updatedUserData;
         }
     },
-    
+
     sequelize,
 freezeTableName: true,
 underscored: true,
-modelName: 'User'
+modelName: 'user'
 }
 );
 
