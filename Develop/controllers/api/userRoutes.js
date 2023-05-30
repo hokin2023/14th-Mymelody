@@ -3,50 +3,50 @@ const { User, Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // GET /api/users
-// router.get('/', async (req, res) => {
-//     // Access our User model and run .findAll() method
-//     try {
-//       const userData =  await User.findAll({
-//         attributes: { exclude: ['password'] }
-//     })
-//     res.status(200).json(userData);
-//     } catch(err) {
-//       res.status(400).json(err);
-//     }
+router.get('/', async (req, res) => {
+    // Access our User model and run .findAll() method
+    try {
+      const userData =  await User.findAll({
+        attributes: { exclude: ['password'] }
+    })
+    res.status(200).json(userData);
+    } catch(err) {
+      res.status(400).json(err);
+    }
     
-//   });
+  });
 
-// // GET /api/users/1
-// router.get('/:id', async (req, res) => {
-//     try {
-//       const userData =  await User.findOne({
-//         attributes: { exclude: ['password']},
-//         where: {
-//           id: req.params.id
-//         },
-//         include: [
-//             {
-//               model: Post,
-//               attributes: ['id', 'title', 'post_content', 'created_at']
-//             },
-//             {
-//                 model: Comment,
-//                 attributes: ['id', 'comment_text', 'created_at'],
-//                 include: {
-//                   model: Post,
-//                   attributes: ['title']
-//                 }
-//             }
-//           ]
+// GET /api/users/1
+router.get('/:id', async (req, res) => {
+    try {
+      const userData =  await User.findOne({
+        attributes: { exclude: ['password']},
+        where: {
+          id: req.params.id
+        },
+        include: [
+            {
+              model: Post,
+              attributes: ['id', 'title', 'post_content', 'created_at']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'created_at'],
+                include: {
+                  model: Post,
+                  attributes: ['title']
+                }
+            }
+          ]
 
-//     })
-//     res.status(200).json(userData);
-//     }
+    })
+    res.status(200).json(userData);
+    }
  
-//     catch(err) {
-//       res.status(400).json(err);
-//     }
-//   });
+    catch(err) {
+      res.status(400).json(err);
+    }
+  });
 
 // POST /api/users
 router.post('/', async (req, res) => {
