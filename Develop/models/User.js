@@ -28,17 +28,17 @@ email: {
     allowNull: false,
     unique: true,
     validate: {
-        isEmail: true
-    }
+        isEmail: true,
+    },
     
 },
 password: {
     type: DataTypes.STRING,
    allowNull: false,
    validate: {
-    len: [2]
-   }
-}
+    len: [2],
+   },
+},
 
 },
 
